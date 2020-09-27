@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="screen_start_margin">16dp</dimen>
+    <dimen name="screen_left_margin">16dp</dimen>
+    <dimen name="screen_end_margin">16dp</dimen>
+    <dimen name="screen_right_margin">16dp</dimen>
+    <dimen name="character_item_margin_start">8dp</dimen>
+    <dimen name="character_item_margin_left">8dp</dimen>
+    <dimen name="character_item_image_size">50dp</dimen>
+    <dimen name="character_item_maring_top">8dp</dimen>
+</resources>
