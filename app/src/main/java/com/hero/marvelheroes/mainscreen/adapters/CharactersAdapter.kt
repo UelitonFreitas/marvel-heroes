@@ -2,11 +2,14 @@ package com.hero.marvelheroes.mainscreen.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.widget.ImageViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.hero.marvelheroes.R
 import com.hero.marvelheroes.repository.Character
+import com.squareup.picasso.Picasso
 
 class CharactersAdapter(private val characters: List<Character>) :
     RecyclerView.Adapter<CharactersAdapter.CharacterViewHolder>() {
@@ -15,7 +18,19 @@ class CharactersAdapter(private val characters: List<Character>) :
         RecyclerView.ViewHolder(layout) {
 
         fun setCharacter(character: Character) {
-            layout.findViewById<TextView>(R.id.text_view_character_name).text = character.name
+            with(layout) {
+                findViewById<TextView>(R.id.text_view_character_name).text = character.name
+
+                findViewById<ImageView>(R.id.image_view_character_image).run {
+                    Picasso.get()
+                        .load(character.imageUrl)
+                        .placeholder(R.drawable.ic_launcher_background)
+                        .error(R.drawable.ic_launcher_background)
+                        .resize(50, 50)
+                        .centerCrop()
+                        .into(this)
+                }
+            }
         }
     }
 

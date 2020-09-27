@@ -49,6 +49,7 @@ dependencies {
     implementation(Dependencies.gsonConverter)
     implementation(Dependencies.loggingInterceptor)
     implementation(Dependencies.Android.recyclerView)
+    implementation(Dependencies.picasso)
 
     testImplementation(Dependencies.Test.junit)
     testImplementation(Dependencies.Test.mockK)

@@ -56,7 +56,7 @@ class RemoteCharacterRepository : CharactersRepository {
 
                             val characters =
                                 characterResponse?.data?.results?.map { characterResponse ->
-                                    Character(characterResponse.name)
+                                    Character(characterResponse.name, "${characterResponse.thumbnail.path}.${characterResponse.thumbnail.extension}")
                                 } ?: emptyList()
 
                             onSuccess(characters)
