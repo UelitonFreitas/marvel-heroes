@@ -44,12 +44,15 @@ dependencies {
     implementation(Dependencies.Android.androidXCoreLibrary)
     implementation(Dependencies.Android.androidXAppCompat)
     implementation(Dependencies.Android.androidXConstraintLayout)
+    implementation(Dependencies.Android.swipeToRefresh)
+    implementation(Dependencies.Android.recyclerView)
+
     implementation(Dependencies.retrofit)
     implementation(Dependencies.gson)
     implementation(Dependencies.gsonConverter)
     implementation(Dependencies.loggingInterceptor)
-    implementation(Dependencies.Android.recyclerView)
     implementation(Dependencies.picasso)
+
 
     testImplementation(Dependencies.Test.junit)
     testImplementation(Dependencies.Test.mockK)

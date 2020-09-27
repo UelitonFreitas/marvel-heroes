@@ -34,13 +34,13 @@ class RemoteCharacterRepository : CharactersRepository {
 
     private val marvelApiClient: MarvelAPI = retrofit.create(MarvelAPI::class.java)
 
-    override fun getCharactersList(onError: (() -> Unit)?, onSuccess: (List<Character>) -> Unit) {
+    override fun getCharactersList(offSet: Int, limit: Int,onError: (() -> Unit)?, onSuccess: (List<Character>) -> Unit) {
 
         val apiKey = BuildConfig.MARVEL_API_KEY
         val privateKey = BuildConfig.MARVEL_PRIVATE_API_KEY
 
-        convertPassMd5("1$privateKey$apiKey")?.let { md5Hash ->
-            marvelApiClient.getCharacterList("1", apiKey, md5Hash)
+        convertPassMd5("$offSet$privateKey$apiKey")?.let { md5Hash ->
+            marvelApiClient.getCharacterList(offSet.toString(), apiKey, md5Hash, limit, offSet)
                 ?.enqueue(object : Callback<CharactersResponse?> {
                     override fun onFailure(call: Call<CharactersResponse?>?, t: Throwable?) {
                         t?.printStackTrace()
@@ -91,8 +91,11 @@ class RemoteCharacterRepository : CharactersRepository {
 interface MarvelAPI {
     @GET("characters")
     fun getCharacterList(
-        @Query("ts") page: String,
+        @Query("ts") ts: String,
         @Query("apikey") apiKey: String,
-        @Query("hash") hash: String
+        @Query("hash") hash: String,
+        @Query("limit") limit: Int,
+        @Query("offset") offset: Int
+
     ): Call<CharactersResponse?>?
 }

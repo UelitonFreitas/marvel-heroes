@@ -9,15 +9,38 @@ class MainScreenPresenter(
 ) :
     MainScreenProtocols.Presenter {
 
-    override fun getCharactersList() {
+    private var actualOffSet = 0
+    private val limitOffSet = 20
+    private val characters = mutableListOf<Character>()
 
-        charactersRepository.getCharactersList(onSuccess = ::showCharacters)
+    override fun getCharactersList() {
+        view.showLoading()
+        charactersRepository.getCharactersList(
+            actualOffSet,
+            limit = limitOffSet,
+            onError = ::showErrorMessage,
+            onSuccess = ::showCharacters
+        )
     }
 
     private fun showCharacters(characters: List<Character>) {
+        view.hideLoading()
 
-        characters.takeIf { it.isNotEmpty() }?.let {
-            view.showCharacters(characters)
-        } ?: view.showEmptyList()
+        with(this.characters){
+            addAll(characters)
+            takeIf { it.isNotEmpty() }?.let {
+                view.showCharacters(this)
+            } ?: view.showEmptyList()
+        }
+    }
+
+    override fun loadNextCharactersOffset() {
+        actualOffSet += limitOffSet
+        getCharactersList()
+    }
+
+    private fun showErrorMessage(){
+        view.hideLoading()
+        view.showErrorMessage()
     }
 }

@@ -5,14 +5,14 @@
     android:id="@+id/character_list_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp">
+    android:layout_marginTop="@dimen/character_item_maring_top">
 
     <TextView
         android:id="@+id/text_view_character_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="@dimen/character_item_margin_start"
+        android:layout_marginLeft="@dimen/character_item_margin_left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/image_view_character_image"
@@ -21,8 +21,8 @@
 
     <ImageView
         android:id="@+id/image_view_character_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/character_item_image_size"
+        android:layout_height="@dimen/character_item_image_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

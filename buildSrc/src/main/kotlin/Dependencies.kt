@@ -19,6 +19,7 @@ object Dependencies {
         const val androidXCoreLibrary = "androidx.core:core-ktx:1.3.1"
         const val androidXAppCompat = "androidx.appcompat:appcompat:1.2.0"
         const val androidXConstraintLayout = "androidx.constraintlayout:constraintlayout:2.0.1"
+        const val swipeToRefresh = "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     }
 
     object Test {
