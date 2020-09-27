@@ -27,6 +27,11 @@ android {
             )
         }
 
+        all {
+            buildConfigField("String", "MARVEL_API_KEY", EnvironmentVariables.MARVEL_API_KEY?.betweenQuotes())
+            buildConfigField("String", "MARVEL_PRIVATE_API_KEY", EnvironmentVariables.MARVEL_PRIVATE_API_KEY?.betweenQuotes())
+        }
+
         create("developer") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
@@ -39,6 +44,10 @@ dependencies {
     implementation(Dependencies.Android.androidXCoreLibrary)
     implementation(Dependencies.Android.androidXAppCompat)
     implementation(Dependencies.Android.androidXConstraintLayout)
+    implementation(Dependencies.retrofit)
+    implementation(Dependencies.gson)
+    implementation(Dependencies.gsonConverter)
+    implementation(Dependencies.loggingInterceptor)
 
     testImplementation(Dependencies.Test.junit)
     testImplementation(Dependencies.Test.mockK)

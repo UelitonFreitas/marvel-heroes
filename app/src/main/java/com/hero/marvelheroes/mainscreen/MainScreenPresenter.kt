@@ -1,7 +1,7 @@
 package com.hero.marvelheroes.mainscreen
 
-import com.hero.marvelheroes.model.Character
-import com.hero.marvelheroes.model.CharactersRepository
+import com.hero.marvelheroes.repository.Character
+import com.hero.marvelheroes.repository.CharactersRepository
 
 class MainScreenPresenter(
     private val view: MainScreenProtocols.View,
@@ -10,6 +10,7 @@ class MainScreenPresenter(
     MainScreenProtocols.Presenter {
 
     override fun getCharactersList() {
+
         charactersRepository.getCharactersList(onSuccess = ::showCharacters)
     }
 

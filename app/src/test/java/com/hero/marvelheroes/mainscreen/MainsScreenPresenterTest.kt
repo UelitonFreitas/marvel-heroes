@@ -1,7 +1,7 @@
 package com.hero.marvelheroes.mainscreen
 
-import com.hero.marvelheroes.model.Character
-import com.hero.marvelheroes.model.CharactersRepository
+import com.hero.marvelheroes.repository.Character
+import com.hero.marvelheroes.repository.CharactersRepository
 import io.mockk.*
 import io.mockk.impl.annotations.MockK
 import org.junit.Before
