@@ -13,6 +13,7 @@ object Dependencies {
     }
 
     object Android {
+        const val recyclerView = "androidx.recyclerview:recyclerview:1.1.0"
         const val androidXCoreLibrary = "androidx.core:core-ktx:1.3.1"
         const val androidXAppCompat = "androidx.appcompat:appcompat:1.2.0"
         const val androidXConstraintLayout = "androidx.constraintlayout:constraintlayout:2.0.1"
