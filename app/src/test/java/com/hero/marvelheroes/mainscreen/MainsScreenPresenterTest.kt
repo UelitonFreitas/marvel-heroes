@@ -17,17 +17,17 @@ class MainsScreenPresenterTest {
 
     private lateinit var mainScreenPresenter: MainScreenPresenter
 
+    val expectedCharacters =
+        listOf(Character("Spider Mans", "spider"), Character("Iron Man", "iron"), Character("Black Widow", "black"))
+
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
 
         mainScreenPresenter = MainScreenPresenter(mainScreenView, charactersRepository)
     }
-
     @Test
     fun `should list all characters`() {
-        val expectedCharacters =
-            listOf(Character("Spider Mans"), Character("Iron Man"), Character("Black Widow"))
 
         returnFromRepository(expectedCharacters)
 
