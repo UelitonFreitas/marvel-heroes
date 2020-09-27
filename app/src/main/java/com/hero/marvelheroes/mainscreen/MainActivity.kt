@@ -18,8 +18,9 @@ class MainActivity : AppCompatActivity(), MainScreenProtocols.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    }
 
+        setSupportActionBar(findViewById(R.id.toolbar))
+    }
 
     override fun onResume() {
         super.onResume()
