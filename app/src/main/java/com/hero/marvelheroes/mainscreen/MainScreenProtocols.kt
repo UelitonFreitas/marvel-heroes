@@ -10,10 +10,12 @@ interface MainScreenProtocols {
         fun showLoading()
         fun hideLoading()
         fun showErrorMessage()
+        fun goToCharacterDetails(character: Character)
     }
 
     interface Presenter {
         fun getCharactersList()
         fun loadNextCharactersOffset()
+        fun onCharacterSelected(character: Character)
     }
 }

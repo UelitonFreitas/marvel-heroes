@@ -46,13 +46,14 @@ dependencies {
     implementation(Dependencies.Android.androidXConstraintLayout)
     implementation(Dependencies.Android.swipeToRefresh)
     implementation(Dependencies.Android.recyclerView)
+    implementation(Dependencies.Android.androidXNavigationFragment)
+    implementation(Dependencies.Android.androidXNavigationUi)
 
     implementation(Dependencies.retrofit)
     implementation(Dependencies.gson)
     implementation(Dependencies.gsonConverter)
     implementation(Dependencies.loggingInterceptor)
     implementation(Dependencies.picasso)
-
 
     testImplementation(Dependencies.Test.junit)
     testImplementation(Dependencies.Test.mockK)

@@ -18,10 +18,19 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".character.CharacterDetailActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".mainscreen.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".mainscreen.MainActivity" />
+        </activity>
+
     </application>
 
 </manifest>

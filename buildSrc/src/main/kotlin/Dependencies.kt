@@ -1,5 +1,6 @@
 object Dependencies {
 
+
     const val picasso = "com.squareup.picasso:picasso:2.71828"
 
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.androidGradlePlugin}"
@@ -15,10 +16,13 @@ object Dependencies {
     }
 
     object Android {
+        const val androidXNavigationUi = "androidx.navigation:navigation-ui-ktx:2.3.0"
         const val recyclerView = "androidx.recyclerview:recyclerview:1.1.0"
         const val androidXCoreLibrary = "androidx.core:core-ktx:1.3.1"
         const val androidXAppCompat = "androidx.appcompat:appcompat:1.2.0"
         const val androidXConstraintLayout = "androidx.constraintlayout:constraintlayout:2.0.1"
+        const val androidXNavigationFragment = "androidx.navigation:navigation-fragment-ktx:2.3.0"
+
         const val swipeToRefresh = "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     }
 

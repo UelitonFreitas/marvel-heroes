@@ -1,5 +1,7 @@
 package com.hero.marvelheroes.mainscreen
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -7,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.hero.marvelheroes.R
+import com.hero.marvelheroes.character.CharacterDetailActivity
 import com.hero.marvelheroes.mainscreen.adapters.CharactersAdapter
 import com.hero.marvelheroes.repository.Character
 import com.hero.marvelheroes.repository.remote.RemoteCharacterRepository
@@ -42,7 +45,7 @@ class MainActivity : AppCompatActivity(), MainScreenProtocols.View {
     }
 
     override fun showCharacters(characters: List<Character>) {
-        val viewAdapter = CharactersAdapter(characters)
+        val viewAdapter = CharactersAdapter(characters, onCharacterClick = ::onCharacterClick)
         val viewManager = LinearLayoutManager(this)
 
         charactersList.apply {
@@ -63,6 +66,10 @@ class MainActivity : AppCompatActivity(), MainScreenProtocols.View {
         })
     }
 
+    private fun onCharacterClick(character: Character) {
+        presenter.onCharacterSelected(character)
+    }
+
     override fun showEmptyList() {
         Toast.makeText(this, "Empty List", Toast.LENGTH_SHORT)
     }
@@ -77,5 +84,9 @@ class MainActivity : AppCompatActivity(), MainScreenProtocols.View {
 
     override fun showErrorMessage() {
         Toast.makeText(this, "Sorry! Error to get characters", Toast.LENGTH_SHORT)
+    }
+
+    override fun goToCharacterDetails(character: Character) {
+        startActivity(CharacterDetailActivity.getIntent(this, character))
     }
 }

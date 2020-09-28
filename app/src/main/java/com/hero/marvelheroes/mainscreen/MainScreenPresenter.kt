@@ -39,6 +39,10 @@ class MainScreenPresenter(
         getCharactersList()
     }
 
+    override fun onCharacterSelected(character: Character) {
+        view.goToCharacterDetails(character)
+    }
+
     private fun showErrorMessage(){
         view.hideLoading()
         view.showErrorMessage()

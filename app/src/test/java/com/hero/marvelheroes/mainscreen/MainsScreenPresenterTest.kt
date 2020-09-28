@@ -18,9 +18,14 @@ class MainsScreenPresenterTest {
     private lateinit var mainScreenPresenter: MainScreenPresenter
 
     private val pageZeroExpectedCharacters =
-        listOf(Character("Spider Man", "spider"), Character("Iron Man", "iron"), Character("Black Widow", "black"))
+        listOf(
+            Character("1", "Spider Man", "spider"),
+            Character("2", "Iron Man", "iron"),
+            Character("3", "Black Widow", "black")
+        )
 
-    private val pageTwoExpectedCharacters = listOf(Character("Thanos", "thanos"), Character("Agent Brand", "brand"))
+    private val pageTwoExpectedCharacters =
+        listOf(Character("4", "Thanos", "thanos"), Character("5", "Agent Brand", "brand"))
 
     private val limitOffSet = 20
 
@@ -30,6 +35,7 @@ class MainsScreenPresenterTest {
 
         mainScreenPresenter = MainScreenPresenter(mainScreenView, charactersRepository)
     }
+
     @Test
     fun `should list all characters`() {
         assertInitialCharacterList()
@@ -57,14 +63,14 @@ class MainsScreenPresenterTest {
     }
 
     @Test
-    fun `should show next characters page`(){
+    fun `should show next characters page`() {
         assertInitialCharacterList()
 
         assertPageOneCharacters()
     }
 
     @Test
-    fun `should show loading on view when fetching characters`(){
+    fun `should show loading on view when fetching characters`() {
         returnFromRepository(0, limitOffSet, pageZeroExpectedCharacters)
 
         mainScreenPresenter.getCharactersList()
@@ -73,7 +79,7 @@ class MainsScreenPresenterTest {
     }
 
     @Test
-    fun `should hide loading on view when fetching characters`(){
+    fun `should hide loading on view when fetching characters`() {
         returnFromRepository(0, limitOffSet, pageZeroExpectedCharacters)
 
         mainScreenPresenter.getCharactersList()
@@ -82,7 +88,7 @@ class MainsScreenPresenterTest {
     }
 
     @Test
-    fun `should hide loading on view when was an error`(){
+    fun `should hide loading on view when was an error`() {
         returnFromRepositoryWithError()
 
         mainScreenPresenter.getCharactersList()

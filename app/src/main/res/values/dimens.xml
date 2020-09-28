@@ -8,4 +8,5 @@
     <dimen name="character_item_margin_left">8dp</dimen>
     <dimen name="character_item_image_size">50dp</dimen>
     <dimen name="character_item_maring_top">8dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

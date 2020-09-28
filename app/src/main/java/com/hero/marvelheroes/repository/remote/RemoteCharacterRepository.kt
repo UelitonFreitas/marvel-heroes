@@ -34,7 +34,12 @@ class RemoteCharacterRepository : CharactersRepository {
 
     private val marvelApiClient: MarvelAPI = retrofit.create(MarvelAPI::class.java)
 
-    override fun getCharactersList(offSet: Int, limit: Int,onError: (() -> Unit)?, onSuccess: (List<Character>) -> Unit) {
+    override fun getCharactersList(
+        offSet: Int,
+        limit: Int,
+        onError: (() -> Unit)?,
+        onSuccess: (List<Character>) -> Unit
+    ) {
 
         val apiKey = BuildConfig.MARVEL_API_KEY
         val privateKey = BuildConfig.MARVEL_PRIVATE_API_KEY
@@ -56,13 +61,16 @@ class RemoteCharacterRepository : CharactersRepository {
 
                             val characters =
                                 characterResponse?.data?.results?.map { characterResponse ->
-                                    Character(characterResponse.name, "${characterResponse.thumbnail.path}.${characterResponse.thumbnail.extension}")
+                                    Character(
+                                        characterResponse.id.toString(),
+                                        characterResponse.name,
+                                        "${characterResponse.thumbnail.path}.${characterResponse.thumbnail.extension}"
+                                    )
                                 } ?: emptyList()
 
                             onSuccess(characters)
                         } ?: onError?.invoke()
                     }
-
                 })
         } ?: onError?.invoke()
     }
