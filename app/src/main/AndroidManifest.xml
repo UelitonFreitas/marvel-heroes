@@ -23,7 +23,7 @@
         </activity>
 
         <activity
-            android:name=".character.CharacterDetailActivity"
+            android:name=".characterdetailscreen.CharacterDetailActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".mainscreen.MainActivity">
             <meta-data

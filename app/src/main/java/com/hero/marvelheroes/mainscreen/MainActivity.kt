@@ -1,7 +1,5 @@
 package com.hero.marvelheroes.mainscreen
 
-import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -9,10 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.hero.marvelheroes.R
-import com.hero.marvelheroes.character.CharacterDetailActivity
+import com.hero.marvelheroes.characterdetailscreen.CharacterDetailActivity
 import com.hero.marvelheroes.mainscreen.adapters.CharactersAdapter
 import com.hero.marvelheroes.repository.Character
 import com.hero.marvelheroes.repository.remote.RemoteCharacterRepository
+
 
 class MainActivity : AppCompatActivity(), MainScreenProtocols.View {
 
