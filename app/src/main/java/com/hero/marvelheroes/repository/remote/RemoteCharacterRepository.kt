@@ -46,19 +46,18 @@ class RemoteCharacterRepository : CharactersRepository {
     ) {
         createCharactersHash(offSet, apiKey)?.let { md5Hash ->
             localScope.launch {
-                withContext(Dispatchers.Main) {
-                    try {
-                        val characters = marvelApiClient.getCharacterList(
-                            offSet.toString(), apiKey, md5Hash, limit, offSet
-                        ).data.results.map { characterResponse ->
-                            convertToCharacterModel(characterResponse)
-                        }
-
-                        onSuccess(characters)
-                    } catch (t: Throwable) {
-                        t.printStackTrace()
-                        onError?.invoke(t)
+                try {
+                    val characters = marvelApiClient.getCharacterList(
+                        offSet.toString(), apiKey, md5Hash, limit, offSet
+                    ).data.results.map { characterResponse ->
+                        convertToCharacterModel(characterResponse)
                     }
+
+                    withContext(Dispatchers.Main) { onSuccess(characters) }
+                } catch (t: Throwable) {
+                    t.printStackTrace()
+
+                    withContext(Dispatchers.Main) { onError?.invoke(t) }
                 }
             }
         } ?: onError?.invoke(Exception("Can not create hash"))
