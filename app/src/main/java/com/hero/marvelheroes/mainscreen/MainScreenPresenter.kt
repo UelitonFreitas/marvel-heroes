@@ -43,7 +43,7 @@ class MainScreenPresenter(
         view.goToCharacterDetails(character)
     }
 
-    private fun showErrorMessage(){
+    private fun showErrorMessage(t: Throwable){
         view.hideLoading()
         view.showErrorMessage()
     }

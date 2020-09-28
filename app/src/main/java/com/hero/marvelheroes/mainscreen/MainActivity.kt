@@ -17,7 +17,9 @@ class MainActivity : AppCompatActivity(), MainScreenProtocols.View {
 
     private val charactersList by lazy { findViewById<RecyclerView>(R.id.recycler_view_characters) }
     private val swipeLayout by lazy { findViewById<SwipeRefreshLayout>(R.id.swipe_container) }
+
     private lateinit var presenter: MainScreenPresenter
+    private val charactersRepository = RemoteCharacterRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity(), MainScreenProtocols.View {
 
         setupToolbar()
 
-        presenter = MainScreenPresenter(this, RemoteCharacterRepository())
+        presenter = MainScreenPresenter(this, charactersRepository)
 
         setupSwipeRefresh()
     }
@@ -63,12 +65,12 @@ class MainActivity : AppCompatActivity(), MainScreenProtocols.View {
             adapter = viewAdapter
         }
 
-        charactersList.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+        charactersList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val canScrollVerticallyFromTopToBottom = recyclerView.canScrollVertically(1)
 
-                if(!canScrollVerticallyFromTopToBottom) {
+                if (!canScrollVerticallyFromTopToBottom) {
                     presenter.loadNextCharactersOffset()
                 }
             }
@@ -97,5 +99,10 @@ class MainActivity : AppCompatActivity(), MainScreenProtocols.View {
 
     override fun goToCharacterDetails(character: Character) {
         startActivity(CharacterDetailActivity.getIntent(this, character))
+    }
+
+    override fun onStop() {
+        charactersRepository.cancel()
+        super.onStop()
     }
 }
