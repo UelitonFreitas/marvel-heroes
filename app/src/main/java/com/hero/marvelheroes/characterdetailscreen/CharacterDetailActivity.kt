@@ -21,10 +21,14 @@ class CharacterDetailActivity : AppCompatActivity(), CharacterDetailsProtocol.Vi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_character_detail)
 
+        setupToolbar()
+    }
+
+    private fun setupToolbar() {
         val toolBar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolBar)
 
-        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 

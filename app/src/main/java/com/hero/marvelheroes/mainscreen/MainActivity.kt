@@ -1,8 +1,8 @@
 package com.hero.marvelheroes.mainscreen
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -23,18 +23,28 @@ class MainActivity : AppCompatActivity(), MainScreenProtocols.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setSupportActionBar(findViewById(R.id.toolbar))
+        setupToolbar()
 
         presenter = MainScreenPresenter(this, RemoteCharacterRepository())
 
+        setupSwipeRefresh()
+    }
+
+    private fun setupSwipeRefresh() {
         swipeLayout.setOnRefreshListener {
             presenter.getCharactersList()
         }
 
-        swipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+        swipeLayout.setColorSchemeResources(
+            android.R.color.holo_blue_bright,
             android.R.color.holo_green_light,
             android.R.color.holo_orange_light,
-            android.R.color.holo_red_light);
+            android.R.color.holo_red_light
+        );
+    }
+
+    private fun setupToolbar() {
+        setSupportActionBar(findViewById(R.id.toolbar))
     }
 
     override fun onResume() {
@@ -70,7 +80,7 @@ class MainActivity : AppCompatActivity(), MainScreenProtocols.View {
     }
 
     override fun showEmptyList() {
-        Toast.makeText(this, "Empty List", Toast.LENGTH_SHORT)
+        Toast.makeText(this, "Empty List", Toast.LENGTH_SHORT).show()
     }
 
     override fun showLoading() {
@@ -82,7 +92,7 @@ class MainActivity : AppCompatActivity(), MainScreenProtocols.View {
     }
 
     override fun showErrorMessage() {
-        Toast.makeText(this, "Sorry! Error to get characters", Toast.LENGTH_SHORT)
+        Toast.makeText(this, "Sorry! Error to get characters", Toast.LENGTH_SHORT).show()
     }
 
     override fun goToCharacterDetails(character: Character) {
