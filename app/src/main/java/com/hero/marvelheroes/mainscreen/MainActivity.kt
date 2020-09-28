@@ -100,8 +100,8 @@ class MainActivity : AppCompatActivity(), MainScreenProtocols.View {
         startActivity(CharacterDetailActivity.getIntent(this, character))
     }
 
-    override fun onStop() {
+    override fun onDestroy() {
         charactersRepository.cancel()
-        super.onStop()
+        super.onDestroy()
     }
 }
