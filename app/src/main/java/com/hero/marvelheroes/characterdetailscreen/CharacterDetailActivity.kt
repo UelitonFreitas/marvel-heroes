@@ -52,6 +52,11 @@ class CharacterDetailActivity : AppCompatActivity(), CharacterDetailsProtocol.Vi
             .into(characterImage)
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
     companion object {
 
         private const val characterIdKey = "characterId"

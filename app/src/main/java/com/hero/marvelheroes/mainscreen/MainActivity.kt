@@ -51,7 +51,6 @@ class MainActivity : AppCompatActivity(), MainScreenProtocols.View {
 
     override fun onResume() {
         super.onResume()
-
         presenter.getCharactersList()
     }
 

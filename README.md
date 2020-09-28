@@ -27,7 +27,6 @@ A lot of things can be done. You can find some of then here:
 - Create async character load in Character Detail Screen. 
 It is possible to get the character from the repository and use deep links for better code encapsulations.
 - Fix recycler view bug when a page is loaded and the screen comes back for the beginning of the activity.
-- Cancel requests when the App goes to the background.
 Besides Retrofit makes the request out of Main Thread, it is possible to use Coroutines.
 - Create better navigation from details view to character list view.
 - Add expresso tests using persisted data to create integration tests of UI and contract tests. We can use different flavors for this objective.
