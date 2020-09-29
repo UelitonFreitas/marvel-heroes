@@ -32,5 +32,9 @@ object Dependencies {
         const val androidXEspresso = "androidx.test.espresso:espresso-core:3.3.0"
         const val mockK = "io.mockk:mockk:${Versions.Test.mockK}"
         const val androidMockK = "io.mockk:mockk-android:${Versions.Test.mockK}"
+        const val conditionWatcher = "com.azimolabs.conditionwatcher:conditionwatcher:0.2"
+        const val espressoContrib = "androidx.test.espresso:espresso-contrib:3.3.0"
+        const val androidXTestRules = "androidx.test:rules:1.3.0-rc01"
+        const val uiAutomator = "androidx.test.uiautomator:uiautomator:2.2.0"
     }
 }

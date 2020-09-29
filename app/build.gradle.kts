@@ -67,5 +67,8 @@ dependencies {
 
     androidTestImplementation(Dependencies.Test.androidXjUnit)
     androidTestImplementation(Dependencies.Test.androidXEspresso)
-    androidTestImplementation(Dependencies.Test.androidMockK)
+    androidTestImplementation(Dependencies.Test.conditionWatcher)
+    androidTestImplementation(Dependencies.Test.espressoContrib)
+    androidTestImplementation(Dependencies.Test.androidXTestRules)
+    androidTestImplementation(Dependencies.Test.uiAutomator)
 }
