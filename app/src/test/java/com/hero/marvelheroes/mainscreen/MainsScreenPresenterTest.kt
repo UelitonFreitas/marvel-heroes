@@ -128,7 +128,7 @@ class MainsScreenPresenterTest {
     }
 
     private fun returnFromRepositoryWithError() {
-        slot<(() -> Unit)>().let { callback ->
+        slot<((Throwable) -> Unit)>().let { callback ->
             every {
                 charactersRepository.getCharactersList(
                     offSet = 0,
@@ -137,7 +137,7 @@ class MainsScreenPresenterTest {
                     onSuccess = any()
                 )
             } answers {
-                callback.captured.invoke()
+                callback.captured.invoke(Exception())
             }
         }
     }
