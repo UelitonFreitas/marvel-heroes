@@ -15,6 +15,9 @@ export MARVEL_PRIVATE_API_KEY="your_private_api_key"
 
 
 ## Test coverage
+
+To check CI status, please contact-me.
+
 ### Unit tests
 MainScreenPresenter	100%
 CharacterDetailsPresenter 100%
@@ -40,3 +43,4 @@ Besides Retrofit makes the request out of Main Thread, it is possible to use Cor
 - Add more Espresso tests using persisted data to create integration tests of UI and contract tests. We can use different flavors for this objective.
 - Automatic upload of APK to store using Kotlin DSL scripts or Fastlane.
 - Create appropriated errors and stop using Exceptions.
+- Limit character list to avoid memory crash
